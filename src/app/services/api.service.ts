@@ -12,4 +12,9 @@ export class ApiService {
 		let url = this.API_URL + moeda + '/ticker/';
 		return this.http.get(url);
 	}
+
+	getDolar(){
+		let urlDolar = 'https://economia.awesomeapi.com.br/all/USD-BRL';
+		return this.http.get(urlDolar);
+	}
 }

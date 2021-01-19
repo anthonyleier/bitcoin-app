@@ -12,27 +12,37 @@
 	</ion-header>
 	<div class="ion-text-center">
 		<ion-item>
-			<ion-label>Valor</ion-label>
-			<ion-input type="number"></ion-input> </ion-item
-		><ion-item>
 			<ion-label>Moeda</ion-label>
-			<ion-select placeholder="Select One">
-				<ion-select-option value="real">Real</ion-select-option>
-				<ion-select-option value="bitcoin">Bitcoin</ion-select-option>
-			</ion-select>
+			<ion-select name="moeda1" [(ngModel)]="cbMoeda1" placeholder="Selecionar Moeda">
+				<ion-select-option value="BTC">Bitcoin</ion-select-option>
+				<ion-select-option value="ETH">Ethereum</ion-select-option>
+				<ion-select-option value="BCH">Bitcoin Cash</ion-select-option>
+				<ion-select-option value="CHZ">Chiliz</ion-select-option>
+				<ion-select-option value="LINK">Chainlink</ion-select-option>
+				<ion-select-option value="LTC">Litecoin</ion-select-option>
+				<ion-select-option value="PAXG">Pax Gold</ion-select-option>
+				<ion-select-option value="USDC">USD Coin</ion-select-option>
+				<ion-select-option value="WBX">WiBX</ion-select-option>
+				<ion-select-option value="XRP">XRP</ion-select-option>
+			</ion-select> </ion-item
+		><ion-item>
+			<ion-label>Valor</ion-label>
+			<ion-input required type="number" [(ngModel)]="edtValor1" name="valor1"></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-label>Valor</ion-label>
-			<ion-input type="number"></ion-input> </ion-item
-		><ion-item>
 			<ion-label>Moeda</ion-label>
-			<ion-select placeholder="Select One">
+			<ion-select name="moeda2" [(ngModel)]="cbMoeda2" placeholder="Selecionar Moeda">
 				<ion-select-option value="real">Real</ion-select-option>
-				<ion-select-option value="bitcoin">Bitcoin</ion-select-option>
-			</ion-select>
+				<ion-select-option value="dolar">Dólar</ion-select-option>
+			</ion-select> </ion-item
+		><ion-item>
+			<ion-label>Valor</ion-label>
+			<ion-input type="number" [(ngModel)]="edtValor2" name="valor2"></ion-input>
 		</ion-item>
-		<ion-button color="success">Confirmar</ion-button>
-		<h3>Resultado: R$5000</h3>
-
+		<form (ngSubmit)="onCalcularClick()">
+			<div class="ion-padding">
+				<ion-button expand="block" type="submit" class="ion-no-margin">Calcular</ion-button>
+			</div>
+		</form>
 	</div>
 </ion-content>
