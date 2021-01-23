@@ -1,0 +1,10 @@
+bitcoinValue - BTC
+ethereumValue - ETH
+bitcoinCashValue - BCH 
+chilizValue - CHZ
+chainlinkValue - LINK 
+litecoinValue - LTC
+paxGoldValue - PAXG
+usdCoinValue - USDC 
+wibxValue - WBX
+xrpValue - XRP

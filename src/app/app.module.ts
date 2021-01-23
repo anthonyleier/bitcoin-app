@@ -14,7 +14,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
 
 
 import { Ng2GoogleChartsModule, GoogleChartsSettings } from 'ng2-google-charts';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 
 @NgModule({
   declarations: [AppComponent],
