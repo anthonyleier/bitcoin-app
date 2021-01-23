@@ -10,11 +10,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
+import { GoogleChartsModule } from 'angular-google-charts';
+
+
+import { Ng2GoogleChartsModule, GoogleChartsSettings } from 'ng2-google-charts';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, Ng2GoogleChartsModule, GoogleChartsModule],
   providers: [
     StatusBar,
     SplashScreen,

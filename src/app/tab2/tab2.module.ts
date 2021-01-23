@@ -8,13 +8,17 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
+import { Ng2GoogleChartsModule, GoogleChartsSettings } from 'ng2-google-charts';
+import { GoogleChartsModule } from 'angular-google-charts';
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    Ng2GoogleChartsModule
   ],
   declarations: [Tab2Page]
 })
