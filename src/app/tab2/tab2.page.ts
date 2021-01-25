@@ -9,10 +9,6 @@ import { GoogleChartInterface } from 'ng2-google-charts';
 })
 
 export class Tab2Page {
-
-	constructor(private apiService: ApiService) {
-		this.getCoin();
-	}
 	public bitcoinValue;
 	public ethereumValue;
 	public bitcoinCashValue;
@@ -24,6 +20,24 @@ export class Tab2Page {
 	public wibxValue;
 	public xrpValue;
 
+	public bitcoinAVG;
+	public ethereumAVG;
+	public bitcoinCashAVG;
+	public chilizAVG;
+	public chainlinkAVG;
+	public litecoinAVG;
+	public paxGoldAVG;
+	public usdCoinAVG;
+	public wibxAVG;
+	public xrpAVG;
+
+	public dataAtual;
+
+	constructor(private apiService: ApiService) {
+		this.getCoin();
+		this.getData();
+		this.dataHoje();
+	}
 	getCoin() {
 		this.apiService.getCoin('BTC').subscribe(data => {
 			var valorVenda = data['ticker']['sell'];
@@ -87,13 +101,30 @@ export class Tab2Page {
 			this.xrpValue = valorVenda;
 		});
 	}
+	getData(){
+		this.apiService.getData('XRP').subscribe(data => {
+			console.log(data);
+			var valorMedio = data['avg_price'];
+			valorMedio = parseFloat(valorMedio).toFixed(2);
+			console.log('xrpValue: ', valorMedio);
+			this.xrpAVG = valorMedio;
+		});
+	}
+	dataHoje() {
+		var data = new Date();
+		var dia = data.getDate();
+		var mes = data.getMonth() + 1;
+		var ano = data.getFullYear();
+		return this.dataAtual=(dia+"/"+mes+"/"+ano);
+	}
+
 	public pieChart: GoogleChartInterface = {
 		chartType: 'LineChart',
 		dataTable: [
 		  ['Task', 'Hours per Day'],
-		  ['Work',     11],
+		  ['Work',     50],
 		  ['Eat',      2],
-		  ['Commute',  3],
+		  ['Commute',  33],
 		  ['Watch TV', 5],
 		  ['Sleep',    7]
 		],
@@ -105,14 +136,14 @@ export class Tab2Page {
 		chartType: 'CandlestickChart',
 		dataTable: [
 		  ['Hora', 'Valor', '1', '2', '3'],
-		  ['10 am', 1 , 22, 3 , 44],
-		  ['11 am', 2, 54, 7, 9],
-		  ['12 am', 1, 35, 40, 23],
-		  ['1 pm', 1, 42, 9, 10],
+		  ['10 am', 1 , 20, 1 , 1],
+		  ['11 am', 1, 1, 20, 1],
+		  ['12 am', 1, 1, 1, 20],
+		  ['1 pm', 20, 1, 1, 1],
 		  ['2 pm', 1, 27, 9, 10],
-		  ['3 pm', 7, 37, 9, 10],
-		  ['4 pm', 7, 60, 9, 10],
-		  ['5 pm', 7, 75, 9, 10]
+		  ['3 pm', 1, 37, 9, 10],
+		  ['4 pm', 1, 60, 9, 10],
+		  ['5 pm', 1, 75, 9, 10]
 		],
 		//firstRowIsData: true,
 		options: {'title': 'Tasks'},
