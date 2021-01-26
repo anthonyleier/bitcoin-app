@@ -26,11 +26,9 @@ export class Tab1Page {
 					var dolar = data['USD']['bid'];
 					this.resultado = this.resultado * dolar;		
 					this.edtValor2 = this.resultado;
-					console.log('Resultado: ', this.resultado);
 				});
 			}else{
 				this.edtValor2 = this.resultado;
-				console.log('Resultado: ', this.resultado);
 			}
 		});
 	}

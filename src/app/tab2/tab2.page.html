@@ -10,8 +10,7 @@
 			<ion-title size="large">Home</ion-title>
 		</ion-toolbar>
 	</ion-header>
-
-	<ion-card>
+	<ion-card (click)="infoPage('BTC')">
 		<ion-card-header>
 			<ion-card-subtitle>Bitcoin</ion-card-subtitle>
 			<ion-card-title>R$ {{bitcoinValue}}</ion-card-title>
@@ -23,7 +22,7 @@
 		</ion-card-content>
 	</ion-card>
 
-	<ion-card>
+	<ion-card (click)="infoPage('ETH')">
 		<ion-card-header>
 			<ion-card-subtitle>Ethereum</ion-card-subtitle>
 			<ion-card-title>R$ {{ethereumValue}}</ion-card-title>
@@ -33,7 +32,8 @@
 			<google-chart [data]="candlestickChart"></google-chart>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('BCH')">
 		<ion-card-header>
 			<ion-card-subtitle>Bitcoin Cash</ion-card-subtitle>
 			<ion-card-title>R$ {{bitcoinCashValue}}</ion-card-title>
@@ -43,7 +43,8 @@
 			<google-chart [data]="pieChart"></google-chart>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('CHZ')">
 		<ion-card-header>
 			<ion-card-subtitle>Chiliz</ion-card-subtitle>
 			<ion-card-title>R$ {{chilizValue}}</ion-card-title>
@@ -53,7 +54,8 @@
 			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('LINK')">
 		<ion-card-header>
 			<ion-card-subtitle>Chainlink</ion-card-subtitle>
 			<ion-card-title>R$ {{chainlinkValue}}</ion-card-title>
@@ -63,7 +65,8 @@
 			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('LTC')">
 		<ion-card-header>
 			<ion-card-subtitle>Litecoin</ion-card-subtitle>
 			<ion-card-title>R$ {{litecoinValue}}</ion-card-title>
@@ -73,7 +76,8 @@
 			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('PAXG')">
 		<ion-card-header>
 			<ion-card-subtitle>Pax Gold</ion-card-subtitle>
 			<ion-card-title>R$ {{paxGoldValue}}</ion-card-title>
@@ -83,7 +87,8 @@
 			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('USDC')">
 		<ion-card-header>
 			<ion-card-subtitle>USD Coin</ion-card-subtitle>
 			<ion-card-title>R$ {{usdCoinValue}}</ion-card-title>
@@ -93,7 +98,8 @@
 			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('WBX')">
 		<ion-card-header>
 			<ion-card-subtitle>WiBX</ion-card-subtitle>
 			<ion-card-title>R$ {{wibxValue}}</ion-card-title>
@@ -103,7 +109,8 @@
 			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
-	<ion-card>
+
+	<ion-card (click)="infoPage('XRP')">
 		<ion-card-header>
 			<ion-card-subtitle>XRP</ion-card-subtitle>
 			<ion-card-title>R$ {{xrpValue}}</ion-card-title>
@@ -113,9 +120,4 @@
 			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
-	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-		<ion-fab-button>
-			<ion-icon name="add"></ion-icon>
-		</ion-fab-button>
-	</ion-fab>
 </ion-content>
