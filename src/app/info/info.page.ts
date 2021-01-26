@@ -8,7 +8,6 @@ import {ApiService} from '../services/api.service';
 	styleUrls: ['./info.page.scss'],
 })
 export class InfoPage implements OnInit {
-	
 	public title;
 	public high;
 	public low;
@@ -17,11 +16,13 @@ export class InfoPage implements OnInit {
 	public buy;
 	public sell;
 
+	public icone = 'star-outline';
+
 	constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService) {
 		this.route.queryParams.subscribe(params => {
 			if (params && params.special) {
-				var data = params.special;	
-				this.title = data;			
+				var data = params.special;
+				this.title = data;
 				this.atualizar(data);
 			}
 		});
@@ -36,6 +37,11 @@ export class InfoPage implements OnInit {
 			this.buy = data['ticker']['buy'];
 			this.sell = data['ticker']['sell'];
 		});
+	}
+
+	favoritar() {
+		if (this.icone == 'star') this.icone = 'star-outline';
+		else this.icone = 'star';
 	}
 
 	ngOnInit() {}
