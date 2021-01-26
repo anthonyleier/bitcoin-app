@@ -27,7 +27,7 @@
 			</ion-select> </ion-item
 		><ion-item>
 			<ion-label>Valor</ion-label>
-			<ion-input required type="number" [(ngModel)]="edtValor1" name="valor1"></ion-input>
+			<ion-input required type="number" [(ngModel)]="edtValor1" name="valor1" min="1"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>Moeda</ion-label>
@@ -37,7 +37,7 @@
 			</ion-select> </ion-item
 		><ion-item>
 			<ion-label>Valor</ion-label>
-			<ion-input type="number" [(ngModel)]="edtValor2" name="valor2"></ion-input>
+			<ion-input type="number" [(ngModel)]="edtValor2" name="valor2" readonly></ion-input>
 		</ion-item>
 		<form (ngSubmit)="onCalcularClick()">
 			<div class="ion-padding">

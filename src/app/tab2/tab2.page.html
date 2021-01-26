@@ -18,8 +18,8 @@
 		</ion-card-header>
 
 		<ion-card-content>
-			<google-chart [data]="pieChart"></google-chart>
-			<canvas></canvas>
+			<google-chart [data]="graficoBitcoin"></google-chart>
+			<p>{{bitcoinString}}</p>
 		</ion-card-content>
 	</ion-card>
 
@@ -28,12 +28,9 @@
 			<ion-card-subtitle>Ethereum</ion-card-subtitle>
 			<ion-card-title>R$ {{ethereumValue}}</ion-card-title>
 		</ion-card-header>
-		
+
 		<ion-card-content>
 			<google-chart [data]="candlestickChart"></google-chart>
-			<ion-card-subtitle>Media:{{xrpAVG}}</ion-card-subtitle>
-			<ion-card-subtitle>Data:{{dataAtual}}</ion-card-subtitle>
-			<canvas></canvas>
 		</ion-card-content>
 	</ion-card>
 	<ion-card>
@@ -43,7 +40,7 @@
 		</ion-card-header>
 
 		<ion-card-content>
-			<canvas></canvas>
+			<google-chart [data]="pieChart"></google-chart>
 		</ion-card-content>
 	</ion-card>
 	<ion-card>
