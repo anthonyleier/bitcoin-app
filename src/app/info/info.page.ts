@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../services/api.service';
+import {GoogleChartInterface} from 'ng2-google-charts';
 
 @Component({
 	selector: 'app-info',
@@ -16,19 +17,36 @@ export class InfoPage implements OnInit {
 	public buy;
 	public sell;
 
+	public dados = [];
+	public valores = [];
+
+	public tabela = [
+		['Task', 'Hours per Day'],
+		['1', 3],
+		['2', 2],
+		['3', 1],
+	];
+
 	public icone = 'star-outline';
 
 	constructor(private route: ActivatedRoute, private router: Router, private apiService: ApiService) {
 		this.route.queryParams.subscribe(params => {
-			if (params && params.special) {
-				var data = params.special;
+			if (this.router.getCurrentNavigation().extras.state) {
+				var data = this.router.getCurrentNavigation().extras.state.moeda;
+				var vetor = this.router.getCurrentNavigation().extras.state.dados;
+				this.tabela = [
+					['Task', 'Hours per Day'],
+					['1', 1],
+					['2', 2],
+					['3', 3],
+				];
 				this.title = data;
-				this.atualizar(data);
+				this.atualizar(data, vetor);
 			}
 		});
 	}
 
-	atualizar(data: string) {
+	atualizar(data: string, vetor) {
 		this.apiService.getCoin(data).subscribe(data => {
 			this.high = data['ticker']['high'];
 			this.low = data['ticker']['low'];
@@ -37,7 +55,17 @@ export class InfoPage implements OnInit {
 			this.buy = data['ticker']['buy'];
 			this.sell = data['ticker']['sell'];
 		});
+
+		this.dados = vetor;
+		for (var i = 0; i < this.dados.length; i++) {
+			this.valores[i] = parseInt(this.dados[i]);
+		}
 	}
+
+	public graph: GoogleChartInterface = {
+		chartType: 'LineChart',
+		dataTable: this.tabela,
+	};
 
 	favoritar() {
 		if (this.icone == 'star') this.icone = 'star-outline';

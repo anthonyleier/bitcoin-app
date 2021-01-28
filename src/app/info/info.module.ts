@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { InfoPageRoutingModule } from './info-routing.module';
 
 import { InfoPage } from './info.page';
+import { Ng2GoogleChartsModule, GoogleChartsSettings } from 'ng2-google-charts';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InfoPageRoutingModule
+    InfoPageRoutingModule,
+    Ng2GoogleChartsModule
   ],
   declarations: [InfoPage]
 })

@@ -3,6 +3,7 @@ import {ApiService} from '../services/api.service';
 import {GoogleChartInterface} from 'ng2-google-charts';
 import {NavigationExtras} from '@angular/router';
 import {Router} from '@angular/router';
+import {ThrowStmt} from '@angular/compiler';
 
 @Component({
 	selector: 'app-tab2',
@@ -21,22 +22,11 @@ export class Tab2Page {
 	public wibxValue;
 	public xrpValue;
 
-	public bitcoinData = [];
-	public ethereumData;
-	public bitcoinCashData;
-	public chilizData;
-	public chainlinkData;
-	public litecoinData;
-	public paxGoldData;
-	public usdCoinData;
-	public wibxData;
-	public xrpData;
-
-	public bitcoinString;
+	public dados = [];
 
 	constructor(private apiService: ApiService, private router: Router) {
 		this.getCoin();
-		this.getMensal();
+		this.getMensalTurbo();
 	}
 	getCoin() {
 		this.apiService.getCoin('BTC').subscribe(data => {
@@ -92,17 +82,16 @@ export class Tab2Page {
 		});
 	}
 
-	getMensal() {
+	async getMensalTurbo() {
 		var data = new Date();
 		var dia = data.getDate();
 		var diaAnterior = dia - 1;
-
-		for (var i = 1; i <= diaAnterior; i++) {
-			this.apiService.getMensal('BTC', i).subscribe(data => {
-				this.bitcoinData.push(data['avg_price']);
-				this.bitcoinString = JSON.stringify(this.bitcoinData);
-			});
+		for (var i = 1; i < diaAnterior; i++) {
+			const response = await this.apiService.getMensalTurbo('BTC', i);
+			const json = await response.json();
+			this.dados[i] = json.avg_price;
 		}
+		console.log(this.dados)
 	}
 
 	public pieChart: GoogleChartInterface = {
@@ -138,19 +127,16 @@ export class Tab2Page {
 
 	public graficoBitcoin: GoogleChartInterface = {
 		chartType: 'LineChart',
-		dataTable: [
-			['Data', 'Preço'],
-			[this.bitcoinData[0], parseInt(this.bitcoinData[1])],
-			[this.bitcoinData[2], parseInt(this.bitcoinData[3])],
-		],
-		//firstRowIsData: true,
-		options: {title: 'Tasks'},
+		dataTable: [['Task', 'Hours per Day']],
+		options: {title: this.dados[1]},
 	};
 
-	infoPage(moeda: string) {
+	infoPage(moeda) {
+		console.log(this.dados)
 		let navigationExtras: NavigationExtras = {
-			queryParams: {
-				special: moeda,
+			state: {
+				moeda: moeda,
+				dados: this.dados,
 			},
 		};
 		this.router.navigate(['info'], navigationExtras);

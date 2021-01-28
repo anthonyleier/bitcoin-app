@@ -25,4 +25,12 @@ export class ApiService {
 		let url = this.API_URL + moeda + '/day-summary/' + ano + '/' + mes + '/' + dia;
 		return this.http.get(url);
 	}
+
+	getMensalTurbo(moeda: string, dia: number) {
+		var data = new Date();
+		var mes = data.getMonth() + 1;
+		var ano = data.getFullYear();
+		let url = this.API_URL + moeda + '/day-summary/' + ano + '/' + mes + '/' + dia;
+		return fetch(url);
+	}
 }
