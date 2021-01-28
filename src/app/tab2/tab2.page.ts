@@ -86,7 +86,7 @@ export class Tab2Page {
 		var data = new Date();
 		var dia = data.getDate();
 		var diaAnterior = dia - 1;
-		for (var i = 1; i < diaAnterior; i++) {
+		for (var i = 0; i < diaAnterior; i++) {
 			const response = await this.apiService.getMensalTurbo('BTC', i);
 			const json = await response.json();
 			this.dados[i] = json.avg_price;
