@@ -57,13 +57,13 @@ export class InfoPage implements OnInit {
 		for (var i = 0; i < this.dados.length; i++) {
 			this.valores[i] = parseInt(this.dados[i]);
 		}
-		
+
 		var dia = new Date();
 		var diaAtual = dia.getDate();
 		var diaAnterior = diaAtual - 1;
 
-		for(i=0; i<diaAnterior-1; i++){
-			this.diasMes[i] = i+1;
+		for (i = 0; i < diaAnterior - 1; i++) {
+			this.diasMes[i] = i + 1;
 		}
 	}
 

@@ -21,13 +21,15 @@ export class Tab2Page {
 	public usdCoinValue;
 	public wibxValue;
 	public xrpValue;
+	public loading;
 
 	public dados = [];
 
 	constructor(private apiService: ApiService, private router: Router) {
 		this.getCoin();
-		this.getMensalTurbo();
+		this.loading = 'none';
 	}
+
 	getCoin() {
 		this.apiService.getCoin('BTC').subscribe(data => {
 			var valorVenda = data['ticker']['sell'];
@@ -82,57 +84,22 @@ export class Tab2Page {
 		});
 	}
 
-	async getMensalTurbo() {
+	async getMensal(moeda) {
 		var data = new Date();
 		var dia = data.getDate();
 		var diaAnterior = dia - 1;
 		for (var i = 0; i < diaAnterior; i++) {
-			const response = await this.apiService.getMensalTurbo('BTC', i);
+			const response = await this.apiService.getMensal(moeda, i);
 			const json = await response.json();
 			this.dados[i] = json.avg_price;
 		}
-		console.log(this.dados)
+		console.log(this.dados);
 	}
 
-	public pieChart: GoogleChartInterface = {
-		chartType: 'LineChart',
-		dataTable: [
-			['Task', 'Hours per Day'],
-			['Work', 50],
-			['Eat', 2],
-			['Commute', 33],
-			['Watch TV', 5],
-			['Sleep', 7],
-		],
-		//firstRowIsData: true,
-		options: {title: 'Tasks'},
-	};
-
-	public candlestickChart: GoogleChartInterface = {
-		chartType: 'CandlestickChart',
-		dataTable: [
-			['Hora', 'Valor', '1', '2', '3'],
-			['10 am', 1, 20, 1, 1],
-			['11 am', 1, 1, 20, 1],
-			['12 am', 1, 1, 1, 20],
-			['1 pm', 20, 1, 1, 1],
-			['2 pm', 1, 27, 9, 10],
-			['3 pm', 1, 37, 9, 10],
-			['4 pm', 1, 60, 9, 10],
-			['5 pm', 1, 75, 9, 10],
-		],
-		//firstRowIsData: true,
-		options: {title: 'Tasks'},
-	};
-
-	public graficoBitcoin: GoogleChartInterface = {
-		chartType: 'LineChart',
-		dataTable: [['Task', 'Hours per Day']],
-		options: {title: this.dados[1]},
-	};
-
-	infoPage(moeda) {
-		console.log(this.dados)
+	async infoPage(moeda) {
+		this.loading = 'block';
+		await this.getMensal(moeda);
+		console.log(this.dados);
 		let navigationExtras: NavigationExtras = {
 			state: {
 				moeda: moeda,
@@ -140,5 +107,6 @@ export class Tab2Page {
 			},
 		};
 		this.router.navigate(['info'], navigationExtras);
+		this.loading = 'none';
 	}
 }

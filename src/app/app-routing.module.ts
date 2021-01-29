@@ -10,6 +10,10 @@ const routes: Routes = [
 		path: 'info',
 		loadChildren: () => import('./info/info.module').then(m => m.InfoPageModule),
 	},
+	{
+		path: 'new',
+		loadChildren: () => import('./new/new.module').then(m => m.NewPageModule),
+	},
 ];
 @NgModule({
 	imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],

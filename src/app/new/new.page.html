@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Novo Cálculo de Investimento</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-content
+			><p>Acompanhe a variação da moeda, aplicando um valor fícticio para observar as suas mudanças.</p></ion-card-content
+		>
+	</ion-card>
+	<ion-item>
+		<ion-label>Moeda</ion-label>
+		<ion-select name="moeda" [(ngModel)]="cbMoeda" placeholder="$">
+			<ion-select-option value="BTC">Bitcoin</ion-select-option>
+			<ion-select-option value="ETH">Ethereum</ion-select-option>
+			<ion-select-option value="BCH">Bitcoin Cash</ion-select-option>
+			<ion-select-option value="CHZ">Chiliz</ion-select-option>
+			<ion-select-option value="LINK">Chainlink</ion-select-option>
+			<ion-select-option value="LTC">Litecoin</ion-select-option>
+			<ion-select-option value="PAXG">Pax Gold</ion-select-option>
+			<ion-select-option value="USDC">USD Coin</ion-select-option>
+			<ion-select-option value="WBX">WiBX</ion-select-option>
+			<ion-select-option value="XRP">XRP</ion-select-option>
+		</ion-select> </ion-item
+	><ion-item>
+		<ion-label>Valor</ion-label>
+		<ion-input required type="number" [(ngModel)]="edtValor" name="valor" min="1" placeholder="(em reais)"></ion-input>
+	</ion-item>
+	<form (ngSubmit)="salvar()">
+		<div class="ion-padding">
+			<ion-button expand="block" color="success" type="submit" class="ion-no-margin">Salvar</ion-button>
+		</div>
+	</form>
+</ion-content>

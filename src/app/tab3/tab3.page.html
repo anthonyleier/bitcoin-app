@@ -1,40 +1,24 @@
 <ion-header [translucent]="true">
 	<ion-toolbar>
-		<ion-title> Acessos </ion-title>
+		<ion-title> Calculadora de Investimentos </ion-title>
 	</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 	<ion-header collapse="condense">
 		<ion-toolbar>
-			<ion-title size="large">Acessos</ion-title>
+			<ion-title size="large">Calculadora de Investimentos</ion-title>
 		</ion-toolbar>
 	</ion-header>
-	<div class="ion-text-center">
-		<h1>Links Imporantes</h1>
-		<h2>www.mercadobitcoin.com.br</h2>
-		<!-- TradingView Widget BEGIN -->
-		<div class="tradingview-widget-container">
-			<div class="tradingview-widget-container__widget"></div>
-			<div class="tradingview-widget-copyright">
-				<a href="https://br.tradingview.com/symbols/BTCUSD/technicals/" rel="noopener" target="_blank"
-					><span class="blue-text">Análise Técnica de BTCUSD</span></a
-				>
-				por TradingView
-			</div>
-			<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-				{
-				"interval" = "1m",
-				"width" = "425",
-				"isTransparent" = false,
-				"height" = "450",
-				"symbol" = "BITSTAMP =BTCUSD",
-				"showIntervalTabs" = true,
-				"locale" = "br",
-				"colorTheme" = "light"
-				 }
-			</script>
-		</div>
-		<!-- TradingView Widget END -->
-	</div>
+	<ion-card *ngFor="let elemento of listaInvest; let i = index">
+		<ion-item>
+			<ion-label>{{elemento.moeda}}</ion-label>
+		</ion-item>
+		<ion-card-content><p>{{elemento.valorInicial}}</p><p>{{elemento.valorAtual}}</p></ion-card-content>
+	</ion-card>
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button>
+			<ion-icon name="add" (click)="novo()"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
 </ion-content>
