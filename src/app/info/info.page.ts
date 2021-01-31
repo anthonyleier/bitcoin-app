@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../services/api.service';
 import {Chart} from 'chart.js';
 import {GoogleChartInterface} from 'ng2-google-charts';
+import {NavigationExtras} from '@angular/router';
 
 @Component({
 	selector: 'app-info',
@@ -70,6 +71,12 @@ export class InfoPage implements OnInit {
 	favoritar() {
 		if (this.icone == 'star') this.icone = 'star-outline';
 		else this.icone = 'star';
+	}
+	voltar(){
+		let navigationExtras: NavigationExtras = {
+			state: {},
+		};
+		this.router.navigate(['tabs/tab2'], navigationExtras);
 	}
 
 	ngOnInit() {}
