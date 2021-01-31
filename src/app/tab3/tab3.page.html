@@ -14,15 +14,20 @@
 		<ion-item>
 			<ion-label>{{elemento.moeda}}</ion-label>
 		</ion-item>
-		<ion-card-content
-			><p class="valorInicial">Valor Inicial: {{elemento.valorInicial}}</p>
-			<p class="valorAtual">{{elemento.valorAtual}}</p></ion-card-content
-		>
+		<ion-card-content>
+			<p class="valorInicial">Valor Inicial: {{elemento.valorInicial}}</p>
+			<p class="valorAtual">{{elemento.valorAtual}}</p></ion-card-content>
+			<ion-item-sliding>
+				<ion-item-options side="end">
+				  <ion-item-option color="danger" expandable>
+					<ion-icon slot="icon-only" name="trash" (click)="remover(i);"></ion-icon>
+				  </ion-item-option>
+				</ion-item-options>
+				<ion-item>
+					<ion-icon slot="end" name="arrow-back-outline"></ion-icon>
+				</ion-item>
+			  </ion-item-sliding>
 	</ion-card>
-	<ion-card
-		><ion-item>
-			<ion-label><p></p></ion-label> </ion-item
-	></ion-card>
 	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
 		<ion-fab-button>
 			<ion-icon name="add" (click)="novo()"></ion-icon>

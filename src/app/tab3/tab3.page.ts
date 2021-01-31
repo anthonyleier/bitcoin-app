@@ -55,4 +55,8 @@ export class Tab3Page {
 		};
 		this.router.navigate(['new'], navigationExtras);
 	}
+	remover(no){
+		(this.listaInvest).splice(no,1);
+		this.atualizar();
+	}
 }
