@@ -19,6 +19,3 @@ ionic serve
 ## Preview
 
 ![Preview do Aplicativo](./src/assets/img/preview.png)
-
-## Licença
-[MIT](https://choosealicense.com/licenses/mit/)
